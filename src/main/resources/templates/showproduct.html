@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MDesigns</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/083f583cdb.js" crossorigin="anonymous"></script>
+
+    <link href="../css/styles.css" rel="stylesheet" type="text/css">
+    <link href="../css/displayproductsstyles.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<!-- Navigation Bar starts here -->
+<div th:insert="navbar :: navbar">  </div>
+<!--Navigation Bar ends here -->
+
+<br>
+<!-- Product type section starts here -->
+<div th:insert="productstypesection :: productTypeSection">  </div>
+<!-- Product type section ends here -->
+
+<br>
+<!-- Detailed product section -->
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-5">
+        <div id="pimageholder">
+        <!--<img src="{{ url_for('static', filename = 'images/'+product.pimage) }}">-->
+            <img  th:src="@{'/images/'+${product.getProdImage()}}"/>
+
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div id="pdetailsholder">
+            <h3 th:text="${product.getProdName()}"></h3>
+            <p id="ppholder" th:text="'&#163;'+${product.getPrice()}"></p>
+            <form th:action="@{'/addToCart/'+${product.getpId()}}" method="post">
+                <input type="submit" value="Add to Basket" class="btn">
+            </form>
+            <br>
+            <h4>Description</h4>
+            <p th:text="${product.getProdDescription()}">
+
+            </p>
+        </div>
+    </div>
+</div>
+<br><br>
+
+
+
+<script src="{{ url_for('static',filename='js/displayproducts.js') }}"></script>
+{%endblock%}

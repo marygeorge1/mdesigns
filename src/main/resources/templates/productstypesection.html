@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MDesigns</title>
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/083f583cdb.js" crossorigin="anonymous"></script>
+
+  <link href="../css/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+<!-- Product type section starts here -->
+
+<br>
+<div class="row" th:fragment="productTypeSection">
+  <div class="col-sm-3" id="type1">
+    <!--<a href="{{url_for('display',ptype='N',page_num=1)}}">Necklaces</a>-->
+    <a th:href="@{/display(ptype='N',page_num=1)}">Necklaces</a>
+  </div>
+  <div class="col-sm-3" id="type2">
+    <!--<a href="{{url_for('display',ptype='E',page_num=1)}}">Earrings</a>-->
+    <a th:href="@{/display(ptype='E',page_num=1)}">Earrings</a>
+  </div>
+  <div class="col-sm-3" id="type3">
+    <!--<a href="{{url_for('display',ptype='B',page_num=1)}}">Bracelets</a>-->
+    <a th:href="@{/display(ptype='B',page_num=1)}">Bracelets</a>
+  </div>
+  <div class="col-sm-3" id="type4">
+    <!--<a href="{{url_for('display',ptype='R',page_num=1)}}">Rings</a>-->
+    <a th:href="@{/display(ptype='R',page_num=1)}">Rings</a>
+  </div>
+</div>
+
+<!-- Product type section ends here -->
+
+</body>
+</html>

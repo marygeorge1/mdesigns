@@ -1,0 +1,210 @@
+
+/* .navbar-brand,.navbar-nav .nav-link.active,.nav-link,.nav-link.disabled{
+    color: white;
+  } */
+
+
+
+
+  .bg-dark {
+  
+    background-color: black;
+}
+
+.container-fluid{
+
+  padding: 0px;
+}
+
+.navbar-brand{
+
+  margin-left: 1%;
+}
+
+  body{
+    background-color: white;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* *******************Styles for product type section starts here********************** */
+
+  #type1,#type2,#type3,#type4{
+    text-align: center;
+    border-bottom: 2px solid white; 
+    transition: border 1s;
+  }
+
+  #type1 a,#type2 a,#type3 a,#type4 a{
+    text-decoration: none;
+    color: black;
+  }
+
+  @media (max-width: 575px) {
+    #type1,#type2,#type3,#type4{
+      text-align: left;
+    }
+  }
+
+  #type1:hover,#type2:hover,#type3:hover,#type4:hover{
+    border-bottom: 2px solid black;
+  }
+
+
+  /* *******************Styles for popular products  section starts here********************** */
+
+  #popular{
+    /* background-color: rgb(215, 228, 240); */
+    background-image: linear-gradient(rgb(153, 172, 179), rgb(230, 234, 238));
+    height: 200px;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  #popular h2{
+    margin-top: 15px;
+  }
+
+  .popularproductholder{
+    text-align: center;
+  }
+
+
+  @media (min-width: 576px) {
+
+    #popular img{
+    
+      border-radius: 50%;
+      width: 72%;
+      height: 125px;
+      margin-top: 25px;
+      transition:width 0.20s,height 0.20s;
+    }
+
+    #popular img:hover{
+
+      height: 130px;
+      width: 75%;
+    }
+
+  }
+ 
+
+  @media (max-width: 575px) {
+    #popular img{
+      border-radius: 50%;
+      width: 98%;
+      height: 95px;
+      margin-top: 42px;
+    }
+  }
+
+  /* *******************Styles for signature products  section starts here********************** */
+
+
+  .sp{
+    padding-left: 2%;
+    padding-right: 2%;
+  }
+  .spheading{
+
+    height: 200px;
+    padding: 5%;
+    padding-left: 6%;
+
+  }
+
+  .spholder{
+    height: 200px;
+    
+  }
+
+  .spholder img{
+    width:100%;
+    height: 200px;
+    border-radius: 5%;
+  }
+
+  /* *******************Styles for  about us  section starts here********************** */
+
+.aboutus{
+  background-color: rgb(236, 194, 241);
+  text-align: center;
+  padding: 3%;
+}
+
+/* *******************Styles for  footer  section starts here********************** */
+
+.footer{
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-size: smaller;
+  height: 50px;
+  padding: 1%;
+}
+
+footer{
+  background-color: black;
+}
+
+/* Styles for login page */
+
+#loginpanel{
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+#loginpanel input[type=submit]{
+  background-color: black;
+  color: white;
+  border-radius: 25px;
+}
+
+#shoppingcarticon{
+  color: white;
+}
+
+#shoppingcartcount{
+  color: white;
+  padding: 0px 6px;
+  background-color: red;
+  border-radius: 50px;
+  vertical-align: top;
+  margin-bottom: 4px;
+  position:relative;
+  left:-5px;
+  top:-5px;
+}
+
+/* cart page styles */
+
+#cartitemimg img{
+  width:100%;
+  height:200px;
+  border-radius: 10px;
+}
+
+#cartitemname span{
+  font-size: 20px;
+}
+
+#cartitemprice span{
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+#removefromcartlink{
+
+  text-decoration: none;
+  color:black;
+}
+
+#removefromcartlink:hover{
+  padding:5px 10px;
+  background-color: rgb(209, 209, 192);
+  border-radius: 25px;
+}
+
+.error{
+  color: red;
+}
