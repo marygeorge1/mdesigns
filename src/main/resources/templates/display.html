@@ -23,6 +23,8 @@
     <link href="../css/displayproductsstyles.css" rel="stylesheet" type="text/css">
 </head>
 
+<body>
+
 <!-- Navigation Bar starts here -->
 <div th:insert="navbar :: navbar">  </div>
 <!--Navigation Bar ends here -->
@@ -88,7 +90,7 @@
           </a> 
         </div>
       
-        {%endfor%}
+        <!--{%endfor%}-->
     </div>
 </div>
 </div>
@@ -97,5 +99,9 @@
 <!--<p id="here">{{ptype}}</p>
 <p id="here">{{prange}}</p>
 <p id="here">{{plimit}}</p>-->
-<script src="{{ url_for('static',filename='js/displayproducts.js') }}"></script>
-{%endblock%}
+<!--<script src="{{ url_for('static',filename='js/displayproducts.js') }}"></script>-->
+<!--
+{%endblock%}-->
+
+</body>
+</html>

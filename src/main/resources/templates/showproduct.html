@@ -20,7 +20,11 @@
 
     <link href="../css/styles.css" rel="stylesheet" type="text/css">
     <link href="../css/displayproductsstyles.css" rel="stylesheet" type="text/css">
+
+    <!--<script type="text/javascript" th:src="@{/js/displayproducts.js}"></script>-->
 </head>
+
+<body>
 
 
 <!-- Navigation Bar starts here -->
@@ -38,9 +42,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-5">
         <div id="pimageholder">
-        <!--<img src="{{ url_for('static', filename = 'images/'+product.pimage) }}">-->
             <img  th:src="@{'/images/'+${product.getProdImage()}}"/>
-
         </div>
     </div>
     <div class="col-sm-6">
@@ -60,7 +62,5 @@
 </div>
 <br><br>
 
-
-
-<script src="{{ url_for('static',filename='js/displayproducts.js') }}"></script>
-{%endblock%}
+</body>
+</html>

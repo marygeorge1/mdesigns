@@ -14,6 +14,8 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,19 +26,12 @@ import java.net.http.HttpRequest;
 import java.util.List;
 
 @Controller
-@SessionAttributes("appName")
 public class HomeController {
 
     @Autowired
     private IUserService userService;
     @Autowired
     private IProductService productService;
-
-
-    //Reading data from application.properties file
-    @Value("${webapplication.name}")
-    private String applicationName;
-
 
 
     //Redirecting any request coming to root URL to /home
@@ -47,20 +42,24 @@ public class HomeController {
 
 
     @RequestMapping("/home")
-    public String showHomePage(Model model){
+    public String showHomePage(Model model,HttpServletRequest request){
 
-        model.addAttribute("loggedInStatus",false);
-        /*
-        The value of applicationName which is read from application.properties file
-        is added to the model attribute, so that it can be added as a session attribute
-        in the first request to the application itself.
-        */
-        model.addAttribute("appName",applicationName);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+       if(authentication.getName()!=null){
+           model.addAttribute("session",request.getSession());
+       }
+
         return "index";
     }
 
-    @RequestMapping("/login")
-    public String showLoginPage(){
+    @RequestMapping("/showlogin")
+    public String showLoginPage(HttpServletRequest request){
+
+        //saving the URL of the requested page
+        String referrer = request.getHeader("Referer");
+        //saving the URL of the requested page as a session attribute
+        request.getSession().setAttribute("url_prior_login", referrer);
         return "login";
     }
 
@@ -70,7 +69,7 @@ public class HomeController {
         return "signup";
     }
 
-    @RequestMapping(value = "/verifyUser",method = RequestMethod.POST)
+    //@RequestMapping(value = "/verifyUser",method = RequestMethod.POST)
     public String verifyUserDetails(User user, Model model, HttpServletRequest request){
 
         //boolean invalidLoginCredentialStatus=!(userService.verifyUser(user));
@@ -203,8 +202,17 @@ public class HomeController {
 
 
     @RequestMapping(value = "/addToCart/{pid}")
-    public String addProductToCart(@PathVariable Integer pid,HttpSession session,Model model){
+    public String addProductToCart(@PathVariable Integer pid,HttpServletRequest request,Model model){
 
+        //return "dummy";
+
+        HttpSession session=request.getSession();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println("Logged in user"+auth.getPrincipal());
+
+        /*if(session.getAttribute("currentUser")==null){
+            return "login";
+        }*/
         if(session.getAttribute("currentUser")==null){
             return "login";
         }

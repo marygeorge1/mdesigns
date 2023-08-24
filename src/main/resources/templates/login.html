@@ -18,8 +18,6 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/083f583cdb.js" crossorigin="anonymous"></script>
 
-    <!--{% block loadstatic%} {%endblock%}-->
-
     <link href="../css/styles.css" rel="stylesheet" type="text/css">
     <title>Login</title>
 </head>
@@ -40,16 +38,21 @@
         <div id="loginpanel">
             <h2>Login</h2>
 
-            <form th:action="@{/verifyUser}"  method="post">
+           <!-- <form th:action="@{/verifyUser}"  method="post">-->
+                <form th:action="@{/authenticateTheUser}"  method="post">
 
-                <label for="email">Enter your email:</label>
-                <input type="text" name="email" class="form-control" id="email">
+                <label for="username">Enter your email:</label>
+                <!--<input type="text" name="email" class="form-control" id="email">-->
+                    <input type="text" name="username" class="form-control" id="username">
 
                 <label for="password">Enter your password</label>
                 <input type="password" name="password" class="form-control" id="password">
                 <br>
                 <input type="submit" value="  Login  " class="btn">
                 <span th:if="${invalidLoginCredentialStatus}" class="error">Invalid login credentials</span>
+                    <div th:if="${param.error}">
+                        <i>Wrong credentials!! Try again..</i>
+                    </div>
             </form>
         </div>
     </div>
