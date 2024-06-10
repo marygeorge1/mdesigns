@@ -17,6 +17,8 @@ public class UserService implements IUserService{
     private UsersRepository userRepo;
     private CartRepository cartRepo;
 
+
+
     @Autowired
     public UserService(UsersRepository userRepo,CartRepository cartRepo){
 
@@ -24,7 +26,7 @@ public class UserService implements IUserService{
         this.cartRepo=cartRepo;
     }
 
-    public User verifyUser(User user){
+    /*public User verifyUser(User user){
 
         User loggedUser= userRepo.findByEmail(user.getEmail());
 
@@ -37,7 +39,7 @@ public class UserService implements IUserService{
         else{
             return null;
         }
-    }
+    }*/
 
     @Override
     public boolean addNewUser(User user) {

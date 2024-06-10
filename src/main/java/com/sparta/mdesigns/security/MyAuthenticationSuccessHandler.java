@@ -39,6 +39,10 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
 
         if(session.getAttribute("url_prior_login")!=null){
             String redirectUrl = (String) session.getAttribute("url_prior_login");
+
+            if(redirectUrl.contains("showlogin") || redirectUrl.contains("displaysignup")){
+                redirectUrl="http://localhost:8080/home";
+            }
             if(redirectUrl!=null){
                 session.removeAttribute("url_prior_login");
             }

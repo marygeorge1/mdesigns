@@ -23,8 +23,8 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http,MyAuthenticationSuccessHandler myAuthenticationSuccessHandler) throws Exception {
 
         http.authorizeHttpRequests((request) -> {
-                    request.requestMatchers("/","/home","/images/*","/css/*","/showProduct/*","/display").permitAll()
-                            .requestMatchers("/addToCart/*","/removeFromCart/*").authenticated();
+                    request.requestMatchers("/","/home","/images/*","/css/*","/showProduct/*","/display","/displaysignup","/registerUser").permitAll()
+                            .requestMatchers("/addToCart/*","/removeFromCart/*","/cart").authenticated();
                 }).formLogin(form->form.loginPage("/showlogin")
                         .loginProcessingUrl("/authenticateTheUser")
                         /*.defaultSuccessUrl("/home")*/

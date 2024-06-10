@@ -23,7 +23,7 @@ public class User {
     private String email;
 
     @Pattern(regexp = "^[A-Za-z0-9]*$",message = "Password should have only alphanumeric characters")
-    @Size(min = 3,max = 50,message = "Shold have minimum 3 characters, can have a maximum of 50 characters")
+    @Size(min = 3,max = 50,message = "Should have minimum 3 characters, can have a maximum of 50 characters")
     @NotBlank(message = "Password cannot be blank")
     private String password;
 

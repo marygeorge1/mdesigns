@@ -58,46 +58,19 @@ public class HomeController {
 
         //saving the URL of the requested page
         String referrer = request.getHeader("Referer");
+        System.out.println("Refereer --------->"+referrer);
         //saving the URL of the requested page as a session attribute
         request.getSession().setAttribute("url_prior_login", referrer);
         return "login";
     }
 
-    @RequestMapping("/signUp")
+    @RequestMapping("/displaysignup")
     public String showSignUpPage(@ModelAttribute("user") User dummyUser){
+
         //model.addAttribute("user",new User());
         return "signup";
     }
 
-    //@RequestMapping(value = "/verifyUser",method = RequestMethod.POST)
-    public String verifyUserDetails(User user, Model model, HttpServletRequest request){
-
-        //boolean invalidLoginCredentialStatus=!(userService.verifyUser(user));
-        User loggedInUser=userService.verifyUser(user);
-
-        if(loggedInUser!=null){
-
-           // model.addAttribute("loggedInStatus",true);
-            //
-            HttpSession session=request.getSession();
-            session.setAttribute("currentUser",loggedInUser);
-
-            List<Cart> cartItems=userService.getCartItems(loggedInUser);
-            session.setAttribute("cartItems",cartItems);
-
-            model.addAttribute("session",session);
-
-            return "index";
-        }
-        else {
-
-            model.addAttribute("invalidLoginCredentialStatus",true);
-            return "login";
-        }
-
-
-
-    }
 
     @RequestMapping(value = "/registerUser",method = RequestMethod.POST)
     public String showRegisterSuccessPage(@Valid User newuser, BindingResult result){
@@ -270,5 +243,10 @@ public class HomeController {
     @RequestMapping(value = "/navbar")
     public String showNavBar(){
         return "navbar";
+    }
+
+    @RequestMapping("/cart")
+    public String showCartPage(){
+        return "cart";
     }
 }

@@ -18,8 +18,10 @@ public class ProductService implements IProductService{
     public ProductService(ProductRepository prodRepo){
        this.prodRepo=prodRepo;
     }
+
     @Override
     public List<Product> getProductsOfThisCategory(String type) {
+
         return prodRepo.findAllByProdImageStartsWith(type);
     }
 
