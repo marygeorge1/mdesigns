@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
@@ -28,6 +30,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    Logger logger= LoggerFactory.getLogger(HomeController.class);
     @Autowired
     private IUserService userService;
     @Autowired
@@ -43,13 +46,12 @@ public class HomeController {
 
     @RequestMapping("/home")
     public String showHomePage(Model model,HttpServletRequest request){
-
+        logger.trace("Home page accessed");
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
        if(authentication.getName()!=null){
            model.addAttribute("session",request.getSession());
        }
-
         return "index";
     }
 
@@ -58,7 +60,7 @@ public class HomeController {
 
         //saving the URL of the requested page
         String referrer = request.getHeader("Referer");
-        System.out.println("Refereer --------->"+referrer);
+        System.out.println("Referer --------->"+referrer);
         //saving the URL of the requested page as a session attribute
         request.getSession().setAttribute("url_prior_login", referrer);
         return "login";
